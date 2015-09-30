@@ -1,0 +1,4 @@
+for i = 1:100
+    plot(solutions(i).energy)
+    pause
+end

@@ -1,0 +1,41 @@
+%MAIN
+clear
+
+L = 1; % number of layers
+beta = 0.5;
+weightRange = 0.2;
+biasRange = 1.0;
+
+trainingDataPath = '../Data/train_data1.txt';
+validationDataPath = '../Data/valid_data1.txt';
+
+% Read training and validation data sets
+[trainingPatterns, trainingOutputs] = ReadData(trainingDataPath);
+[validationPatterns, validationOutputs] = ReadData(validationDataPath);
+
+% Normalize data
+[trainingPatterns, validationPatterns] = ...
+    NormalizeData(trainingPatterns, validationPatterns);
+
+% Compute some useful values
+nTraining = size(trainingPatterns,1);
+nValidation = size(validationPatterns,1);
+N = size(trainingPatterns,2);
+M = size(trainingOutputs,2);
+
+% Add dummy neuron with fixed value -1
+trainingPatterns = [trainingPatterns, -ones(nTraining,1)];
+validationPatterns = [validationPatterns, -ones(nValidation,1)];
+
+% Initialize weight matrix
+W = -weightRange + 2*weightRange.*rand(M,N);
+W = [W, -biasRange + 2*biasRange.*rand(M,1)];
+
+perceptron = cell(1,L);
+perceptron{1,1} = W;
+
+inputPattern = trainingPatterns(1,:)';
+
+weightsCell = cell(1,1);
+weightsCell{1,1} = W;
+networkState = RunPerceptron(inputPattern, weightsCell, beta)

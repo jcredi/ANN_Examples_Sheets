@@ -1,0 +1,17 @@
+function networkState = RunPerceptron(inputPattern, neuronsInLayers, ...
+    weights, beta)
+%RUNPERCEPTRON
+
+L = size(weights,2);
+networkState = cell(1,L+1);
+
+networkState{1} = inputPattern;
+
+for l = 2:L+1
+    weightMatrix = perceptron{1,l};
+    inputPattern = tanh(beta*weightMatrix*inputPattern);
+end
+
+output = inputPattern;
+
+end
