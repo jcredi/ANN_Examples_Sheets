@@ -2,7 +2,7 @@ function [ patterns, outputs ] = ReadData( dataFilePath )
 %READDATA
 
 fileID = fopen(dataFilePath);
-data = textscan(fileID, '%f %f %d8');
+data = textscan(fileID, '%f %f %f');
 fclose(fileID);
 
 patterns = [data{1}, data{2}];
