@@ -1,5 +1,5 @@
-function weightsCell = InitializeWeights(neuronsInLayers, wR, bR)
-%INITIALIZEWEIGHTS
+function weightsCell = InitialiseWeightsBiases(neuronsInLayers, wR, bR)
+%InitialiseWeightsBiases
 
 % wR = weightRange = 0.2;
 % bR = biasRange = 1.0;
