@@ -3,11 +3,11 @@
 nRandomData = 1e5;
 rangeX = [-15, 25];
 rangeY = [-10, 15];
-spacing = 0.33;
+spacing = 0.5;
 beta = 0.5;
 threshold = 0.01;
 
-bestKohonenWeights = resultsStructure(iBestClassifier).kohonenWeigths;
+bestKohonenWeights = resultsStructure(iBestClassifier).kohonenWeights;
 bestPerceptronWeights = resultsStructure(iBestClassifier).perceptronWeights;
 
 %% Initialise plot
@@ -50,6 +50,7 @@ plotDecisionBoundary = plot(decisionBoundaryX, decisionBoundaryY,'r','LineWidth'
 set(gca,'FontSize',16);
 axis square;
 xlim([-15, 25]);
+hsp1 = get(gca, 'Position');
 hold off
 
 %% Generate meshgrid (for pseudo-colour map)
@@ -69,6 +70,9 @@ end
 % Plot pseudo-colour map
 subplot(1,2,2);
 pcolor(meshGridX,meshGridY,meshGridZ)
-shading interp
+shading flat
 axis square;
+hsp2 = get(gca, 'Position');
+colorbar;
 set(gca,'FontSize',16);
+set(gca, 'Position', [hsp2(1:2) hsp1(3:4)]);

@@ -6,11 +6,11 @@ nRuns = 20;
 nCurvesToPlot = 3;
 
 nIterationsKohonen = 1e5;
-nKohonenNodes = 5;
+nKohonenNodes = 20;
 etaKohonen = 0.02;
-sigmaNeighbourhoodFunction = 0.1;
+sigmaNeighbourhoodFunction = 0.2;
 
-nIterationsBackpropagation = 1e4;
+nIterationsBackpropagation = 5e3;
 nOutputNodes = 1;
 etaBackpropagation = 0.1;
 beta = 0.5;
@@ -21,6 +21,10 @@ tmpData = importdata('../Data/data_classify.txt');
 patternClasses = tmpData(:,1);
 patterns = tmpData(:,2:end);
 nPatterns = size(patterns, 1);
+
+%% Loop over number of Gaussian nodes
+% h = waitbar(0,'Please wait...');
+% for nKohonenNodes=1:20
 
 %% Loop over runs
 for iRun = 1:nRuns
@@ -71,6 +75,11 @@ avgErrorValidation = mean(tmpErrVal);
 errErrorValidation = std(tmpErrVal);
 [~,iBestClassifier] = min(tmpErrVal);
 
+% errVsNodesTrainingAverage(nKohonenNodes) = avgErrorTraining;
+% errVsNodesTrainingSd(nKohonenNodes) = errErrorTraining;
+% errVsNodesValidationAverage(nKohonenNodes) = avgErrorValidation;
+% errVsNodesValidationSd(nKohonenNodes) = errErrorValidation;
+
 fprintf('\n  Final energy (training set): %4.3f, uncertainty: %4.3f',avgEnergyTraining,errEnergyTraining);
 fprintf('\n  Final energy (validation set): %4.3f, uncertainty: %4.3f',avgEnergyValidation,errEnergyValidation);
 
@@ -80,7 +89,7 @@ fprintf('\n  Final classification error (validation set): %4.3f, uncertainty: %4
 disp('Run script "DecisionBoundary.m" for a graphical representation of the decision boundary for the best network found.');
 
 
-
-
-
+% waitbar(nKohonenNodes/20,h);
+% end
+% close(h);
 

@@ -14,7 +14,7 @@ A = triu(A) + triu(A)';
 neighbourhoodMatrix = exp(-(A.^2)/(2*sigmaNeighbourhoodFunction^2));
 
 % ===============================================================
-%% Plot weights update on-the-go (not recommended)
+%% Plot weights update on-the-go (cool, but not recommended for nRuns > 1)
 % figure();
 % hold on
 % dataPlot = plot(patterns(:,1),patterns(:,2),'.','MarkerSize',12);

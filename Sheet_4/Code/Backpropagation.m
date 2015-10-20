@@ -26,7 +26,7 @@ patterns, patternClasses, kohonenWeights, perceptronWeights, beta);
 patterns, patternClasses, kohonenWeights, perceptronWeights, beta);
 
 %======================================
-%% Draw colormap on-the-go (not recommended)
+%% Draw colormap on-the-go (cool, but not recommended for nRuns > 1)
 %
 % rangeX = [-15, 25];
 % rangeY = [-10, 15];
@@ -48,8 +48,6 @@ patterns, patternClasses, kohonenWeights, perceptronWeights, beta);
 % shading flat
 % axis square;
 %======================================
-
-
 
 for iBackpropagation = 1:nIterationsBackpropagation
 

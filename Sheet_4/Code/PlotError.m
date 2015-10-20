@@ -18,16 +18,16 @@ for i = 1:nCurvesToPlot
   iPlot = whichOnes(i);
   
   % training
-  errorTrainingPlot(iPlot) = semilogy(xValues,resultsStructure(iPlot).errorTraining);
+  errorTrainingPlot(iPlot) = plot(xValues,resultsStructure(iPlot).errorTraining);
   set(errorTrainingPlot(iPlot),'Color',defaultBlue,'LineWidth',1.5);
   
   % validation
-  errorValidationPlot(iPlot) = semilogy(xValues,resultsStructure(iPlot).errorValidation);
+  errorValidationPlot(iPlot) = plot(xValues,resultsStructure(iPlot).errorValidation);
   set(errorValidationPlot(iPlot),'Color',defaultRed,'LineWidth',1.5);
   
 end
 
-set(gca,'yscale','log','FontSize',16);
+set(gca,'FontSize',16);
 xlabel('Backpropagation itereations');
 ylabel('Classification error');
 xlim([0,nIterationsBackpropagation]);
